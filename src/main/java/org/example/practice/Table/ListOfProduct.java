@@ -13,7 +13,7 @@ public class ListOfProduct extends BaseEntity {
     private int id;
     private Product product;
     private int theQuantityOfTheProduct;
-    private Set<Manufactures> listOfProducts;
+    private Set<Manufactures> manufactures;
     private Set<Order> order;
 
 
@@ -47,11 +47,11 @@ public class ListOfProduct extends BaseEntity {
 
     @OneToMany(mappedBy = "listOfProduct", targetEntity = Manufactures.class,
             fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    public Set<Manufactures> getListOfProducts() {
-        return listOfProducts;
+    public Set<Manufactures> getManufactures() {
+        return manufactures;
     }
-    public void setListOfProducts(Set<Manufactures> listOfProducts) {
-        this.listOfProducts = listOfProducts;
+    public void setManufactures(Set<Manufactures> manufactures) {
+        this.manufactures = manufactures;
     }
 
     @OneToMany(mappedBy = "listOfProduct", targetEntity = Order.class,
