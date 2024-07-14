@@ -1,3 +1,4 @@
+
 package org.example.practice.Repositories;
 
 import org.example.practice.Table.Employee;
@@ -15,7 +16,3 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     @Query("SELECT e FROM Employee e WHERE e.post = :post")
     List<Employee> findEmployeesByPost(@Param("post") String post);
 }
-
-
-
-

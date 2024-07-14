@@ -12,11 +12,11 @@ import java.util.List;
 @Repository
 public interface ManufacturesRepository extends JpaRepository<Manufactures, Integer> {
 
-    // партии товаров,срок годности которых истикает до определённой даты
-    @Query("SELECT m FROM Manufactures m WHERE m.expirationDate <= :expirationDate")
-    List<Manufactures> findManufacturesWithExpiringProducts(@Param("expirationDate") Date expirationDate);
-
-    // партии товаров, произведённых в определённую дату
-    @Query("SELECT m FROM Manufactures m WHERE m.date = :productionDate")
-    List<Manufactures> findManufacturesByProductionDate(@Param("productionDate") Date productionDate);
+//    // партии товаров,срок годности которых истикает до определённой даты
+//    @Query("SELECT m FROM Manufactures m WHERE m.expirationDate <= :expirationDate")
+//    List<Manufactures> findManufacturesWithExpiringProducts(@Param("expirationDate") Date expirationDate);
+//
+//    // партии товаров, произведённых в определённую дату
+//    @Query("SELECT m FROM Manufactures m WHERE m.date = :productionDate")
+//    List<Manufactures> findManufacturesByProductionDate(@Param("productionDate") Date productionDate);
 }
