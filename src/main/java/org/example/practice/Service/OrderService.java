@@ -1,5 +1,6 @@
 package org.example.practice.Service;
 
+import org.example.practice.Relationship.Order;
 import org.example.practice.Repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,4 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public List<Object[]> findOrderCountByBranch() {
-        return orderRepository.findOrderCountByBranch();
-    }
 }

@@ -2,7 +2,6 @@ package org.example.practice.Service;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.example.practice.Table.Client;
 import org.example.practice.Table.Employee;
 import org.example.practice.Repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +13,19 @@ import java.util.List;
 @Service
 public class EmployeeService {
 
+    private final EmployeeRepository employeeRepository;
+    private final BranchOfTheOrganizationService branchService;
+
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Autowired
+    public EmployeeService(EmployeeRepository employeeRepository,
+                           BranchOfTheOrganizationService branchService) {
+        this.employeeRepository = employeeRepository;
+        this.branchService = branchService;
+    }
+
 
     @Transactional
     public void save(Employee employee) {
@@ -48,5 +58,19 @@ public class EmployeeService {
         if (employee != null) {
             entityManager.remove(employee);
         }
+    }
+
+    @Transactional
+    public String increaseSalariesForMostProfitableBranch() {
+        List<Object[]> branchProfits = branchService.findBranchProfits();
+        if (branchProfits.isEmpty()) {
+            throw new IllegalStateException("No branches found or no profits calculated.");
+        }
+
+        String mostProfitableBranchName = (String) branchProfits.get(0)[0];
+
+        employeeRepository.updateEmployeeSalariesByBranchName(mostProfitableBranchName);
+
+        return mostProfitableBranchName;
     }
 }

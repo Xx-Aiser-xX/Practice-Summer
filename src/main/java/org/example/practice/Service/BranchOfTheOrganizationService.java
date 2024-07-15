@@ -15,6 +15,17 @@ public class BranchOfTheOrganizationService {
 
     @PersistenceContext
     private EntityManager entityManager;
+    private final BranchOfTheOrganizationRepository branchRepo;
+
+
+    @Autowired
+    public BranchOfTheOrganizationService(BranchOfTheOrganizationRepository branchRepo) {
+        this.branchRepo = branchRepo;
+    }
+
+    public List<Object[]> findBranchProfits() {
+        return branchRepo.findBranchProfits();
+    }
 
     @Transactional
     public void save(BranchOfTheOrganization branch) {
@@ -48,4 +59,5 @@ public class BranchOfTheOrganizationService {
             entityManager.remove(branch);
         }
     }
+
 }

@@ -19,4 +19,8 @@ public interface ManufacturesRepository extends JpaRepository<Manufactures, Inte
 //    // партии товаров, произведённых в определённую дату
 //    @Query("SELECT m FROM Manufactures m WHERE m.date = :productionDate")
 //    List<Manufactures> findManufacturesByProductionDate(@Param("productionDate") Date productionDate);
+
+    @Query("SELECT m FROM Manufactures m WHERE m.expirationDate <= :thresholdDate")
+    List<Manufactures> findProductsWithExpiringSoon(@Param("thresholdDate") Date thresholdDate);
+
 }

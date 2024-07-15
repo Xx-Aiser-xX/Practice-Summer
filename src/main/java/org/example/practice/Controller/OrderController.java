@@ -20,12 +20,4 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping("/branch-stats")
-    public ResponseEntity<List<Object[]>> getOrderCountByBranch() {
-        List<Object[]> branchStats = orderService.findOrderCountByBranch();
-        if (branchStats.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(branchStats);
-    }
 }

@@ -6,13 +6,18 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Modifying;
 
 import java.util.List;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
-    // сотрудники с определённой должностью
-    @Query("SELECT e FROM Employee e WHERE e.post = :post")
-    List<Employee> findEmployeesByPost(@Param("post") String post);
+    @Query("SELECT e FROM Employee e JOIN e.branchOfTheOrganization b WHERE b.nameBranch = :nameBranch")
+    List<Employee> findEmployeesByBranchName(@Param("nameBranch") String nameBranch);
+
+    @Modifying
+    @Query("UPDATE Employee e SET e.wages = e.wages * 1.05 WHERE e.branchOfTheOrganization.nameBranch = :nameBranch")
+    int updateEmployeeSalariesByBranchName(@Param("nameBranch") String nameBranch);
+
 }
