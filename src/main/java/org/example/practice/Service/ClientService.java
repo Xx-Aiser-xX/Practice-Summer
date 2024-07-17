@@ -68,7 +68,6 @@ public class ClientService implements BaseService<ClientDto>{
                     card.setOwnerStatus("Platinum");
                 }
             } else {
-                // Если у клиента отсутствует карта лояльности - возможно, придется обработать этот случай.
                 throw new IllegalStateException("Client with id: " + clientId + " does not have a loyalty card.");
             }
 

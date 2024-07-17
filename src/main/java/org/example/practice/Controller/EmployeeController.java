@@ -22,18 +22,6 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @PutMapping("/increase-salaries")
-    public ResponseEntity<String> increaseSalariesForMostProfitableBranch() {
-        try {
-            // Получаем название филиала
-            String branchName = employeeService.increaseSalariesForMostProfitableBranch();
-            String message = "Зарплата сотрудников в филиале " + branchName + " поднята на 5%";
-            return ResponseEntity.ok(message);
-        } catch (IllegalStateException e) {
-            return ResponseEntity.status(500).body("Произошла ошибка: " + e.getMessage());
-        }
-    }
-
     @GetMapping
     public List<EmployeeDto> getAllEmployees() {
         return employeeService.getAll();
@@ -54,4 +42,17 @@ public class EmployeeController {
         employeeDto.setId(id);
         employeeService.update(employeeDto);
     }
+
+    @PutMapping("/increase-salaries")
+    public ResponseEntity<String> increaseSalariesForMostProfitableBranch() {
+        try {
+            // Получаем название филиала
+            String branchName = employeeService.increaseSalariesForMostProfitableBranch();
+            String message = "Зарплата сотрудников в филиале " + branchName + " поднята на 5%";
+            return ResponseEntity.ok(message);
+        } catch (IllegalStateException e) {
+            return ResponseEntity.status(500).body("Произошла ошибка: " + e.getMessage());
+        }
+    }
+
 }

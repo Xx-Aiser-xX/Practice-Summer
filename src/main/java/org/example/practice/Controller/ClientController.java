@@ -27,6 +27,18 @@ public class ClientController {
     public ClientController(ClientService clientService) {
         this.clientService = clientService;
     }
+
+    @GetMapping("/card")
+    public List<Client> getClientsWithLoyaltyCard() {
+        return clientService.findAllClientsWithLoyaltyCard();
+    }
+
+    @PostMapping("/update-statuses")
+    public ResponseEntity<String> updateClientStatuses() {
+        clientService.updateClientStatusesBasedOnTotalSpent();
+        return ResponseEntity.ok("Статусы клиентов были успешно обновлены");
+    }
+
     @GetMapping
     public List<ClientDto> getAllClients() {
         return clientService.getAll();
@@ -46,16 +58,5 @@ public class ClientController {
     public void updateClient(@PathVariable int id, @RequestBody ClientDto clientDto) {
         clientDto.setId(id);
         clientService.update(clientDto);
-    }
-
-    @GetMapping("/card")
-    public List<Client> getClientsWithLoyaltyCard() {
-        return clientService.findAllClientsWithLoyaltyCard();
-    }
-
-    @PostMapping("/update-statuses")
-    public ResponseEntity<String> updateClientStatuses() {
-        clientService.updateClientStatusesBasedOnTotalSpent();
-        return ResponseEntity.ok("Статусы клиентов были успешно обновлены");
     }
 }

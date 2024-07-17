@@ -25,11 +25,9 @@ public class EmployeeRepository extends BaseRepository<Employee> {
 
     @Transactional
     public int updateEmployeeSalariesByBranchName(String nameBranch) {
-        // Создаём экземпляр Query, а не TypedQuery, поскольку это запрос на обновление
         Query query = entityManager.createQuery(
                 "UPDATE Employee e SET e.wages = e.wages * 1.05 WHERE e.branchOfTheOrganization.nameBranch = :nameBranch");
         query.setParameter("nameBranch", nameBranch);
-        // Выполняем обновление и возвращаем количество обновлённых записей
         return query.executeUpdate();
     }
 

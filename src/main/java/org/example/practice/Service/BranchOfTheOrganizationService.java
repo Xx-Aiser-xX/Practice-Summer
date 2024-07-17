@@ -22,11 +22,6 @@ public class BranchOfTheOrganizationService implements BaseService<BranchOfTheOr
     public BranchOfTheOrganizationService(BranchOfTheOrganizationRepository branchRepo) {
         this.branchRepo = branchRepo;
     }
-
-    public List<Object[]> findBranchProfits() {
-        return branchRepo.findBranchProfits();
-    }
-
     @Transactional
     @Override
     public void create(BranchOfTheOrganizationDto branchOfTheOrganizationDto) {
@@ -50,4 +45,10 @@ public class BranchOfTheOrganizationService implements BaseService<BranchOfTheOr
     public void update(BranchOfTheOrganizationDto branchOfTheOrganizationDto) {
         entityManager.merge(branchOfTheOrganizationDto);
     }
+
+    public List<Object[]> findBranchProfits() {
+        return branchRepo.findBranchProfits();
+    }
+
+
 }
