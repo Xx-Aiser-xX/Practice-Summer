@@ -2,62 +2,34 @@ package org.example.practice.Service;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import org.example.practice.Dto.EmployeeDto;
 import org.example.practice.Table.Employee;
 import org.example.practice.Repositories.EmployeeRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-public class EmployeeService {
+public class EmployeeService implements BaseService<EmployeeDto> {
 
     private final EmployeeRepository employeeRepository;
     private final BranchOfTheOrganizationService branchService;
+    private final ModelMapper modelMapper;
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Autowired
     public EmployeeService(EmployeeRepository employeeRepository,
-                           BranchOfTheOrganizationService branchService) {
+                           BranchOfTheOrganizationService branchService,
+                           ModelMapper modelMapper) {
         this.employeeRepository = employeeRepository;
         this.branchService = branchService;
-    }
-
-
-    @Transactional
-    public void save(Employee employee) {
-        entityManager.persist(employee);
-    }
-
-    @Transactional
-    public void saveAllEmployee(List<Employee> employees) {
-        for (Employee employee : employees) {
-            entityManager.persist(employee);
-        }
-    }
-
-    @Transactional
-    public void update(Employee employee) {
-        entityManager.merge(employee);
-    }
-
-    public Employee findById(int id) {
-        return entityManager.find(Employee.class, id);
-    }
-
-    public List<Employee> findAll() {
-        return entityManager.createQuery("from Employee", Employee.class).getResultList();
-    }
-
-    @Transactional
-    public void deleteById(int id) {
-        Employee employee = findById(id);
-        if (employee != null) {
-            entityManager.remove(employee);
-        }
+        this.modelMapper = modelMapper;
     }
 
     @Transactional
@@ -72,5 +44,43 @@ public class EmployeeService {
         employeeRepository.updateEmployeeSalariesByBranchName(mostProfitableBranchName);
 
         return mostProfitableBranchName;
+    }
+
+    @Transactional
+    @Override
+    public void create(EmployeeDto employeeDto) {
+        Employee employee = convertToEntity(employeeDto);
+        entityManager.persist(employee);
+    }
+
+    @Transactional
+    @Override
+    public List<EmployeeDto> getAll() {
+        List<Employee> employees = entityManager.createQuery("from Employee", Employee.class).getResultList();
+        return employees.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional
+    @Override
+    public EmployeeDto getById(int id) {
+        Employee employee = entityManager.find(Employee.class, id);
+        return convertToDto(employee);
+    }
+
+    @Transactional
+    @Override
+    public void update(EmployeeDto employeeDto) {
+        Employee employee = convertToEntity(employeeDto);
+        entityManager.merge(employee);
+    }
+
+    private Employee convertToEntity(EmployeeDto employeeDto) {
+        return modelMapper.map(employeeDto, Employee.class);
+    }
+
+    private EmployeeDto convertToDto(Employee employee) {
+        return modelMapper.map(employee, EmployeeDto.class);
     }
 }
