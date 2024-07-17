@@ -38,25 +38,4 @@ public class ClientController {
         clientService.updateClientStatusesBasedOnTotalSpent();
         return ResponseEntity.ok("Статусы клиентов были успешно обновлены");
     }
-
-    @GetMapping
-    public List<ClientDto> getAllClients() {
-        return clientService.getAll();
-    }
-
-    @GetMapping("/{id}")
-    public ClientDto getClientById(@PathVariable int id) {
-        return clientService.getById(id);
-    }
-
-    @PostMapping
-    public void saveClient(@RequestBody ClientDto clientDto) {
-        clientService.create(clientDto);
-    }
-
-    @PutMapping("/{id}")
-    public void updateClient(@PathVariable int id, @RequestBody ClientDto clientDto) {
-        clientDto.setId(id);
-        clientService.update(clientDto);
-    }
 }

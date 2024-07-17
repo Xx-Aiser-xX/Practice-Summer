@@ -14,7 +14,6 @@ public class ClientRepository extends BaseRepository<Client> {
         super(Client.class);
     }
 
-    @Transactional
     public List<Client> findAllClientsWithLoyaltyCard() {
         try {
             TypedQuery<Client> query = entityManager.createQuery(
@@ -26,7 +25,6 @@ public class ClientRepository extends BaseRepository<Client> {
         }
     }
 
-    @Transactional
     public List<Client> findTopClientsByOrderCount(int topN) {
         try {
             TypedQuery<Client> query = entityManager.createQuery(
@@ -43,7 +41,6 @@ public class ClientRepository extends BaseRepository<Client> {
         }
     }
 
-    @Transactional
     public List<Object[]> findTotalSpentByClients() {
         try {
             TypedQuery<Object[]> query = entityManager.createQuery(

@@ -23,7 +23,6 @@ public class EmployeeRepository extends BaseRepository<Employee> {
         return query.getResultList();
     }
 
-    @Transactional
     public int updateEmployeeSalariesByBranchName(String nameBranch) {
         Query query = entityManager.createQuery(
                 "UPDATE Employee e SET e.wages = e.wages * 1.05 WHERE e.branchOfTheOrganization.nameBranch = :nameBranch");
@@ -32,3 +31,5 @@ public class EmployeeRepository extends BaseRepository<Employee> {
     }
 
 }
+
+

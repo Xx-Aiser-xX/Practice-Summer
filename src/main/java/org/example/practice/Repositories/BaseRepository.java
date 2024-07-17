@@ -17,7 +17,6 @@ public abstract class BaseRepository<Entity> {
         this.entityClass = entityClass;
     }
 
-    @Transactional
     public Entity create(Entity entity) {
         try {
             entityManager.persist(entity);
@@ -46,7 +45,6 @@ public abstract class BaseRepository<Entity> {
         return null;
     }
 
-    @Transactional
     public Entity update(Entity entity) {
         try {
             return entityManager.merge(entity);

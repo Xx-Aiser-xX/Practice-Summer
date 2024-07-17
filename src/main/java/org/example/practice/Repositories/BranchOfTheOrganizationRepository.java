@@ -16,7 +16,6 @@ public class BranchOfTheOrganizationRepository extends BaseRepository<BranchOfTh
         super(BranchOfTheOrganization.class);
     }
 
-    @Transactional
     public List<Object[]> findBranchProfits() {
         try {
             TypedQuery<Object[]> query = entityManager.createQuery(

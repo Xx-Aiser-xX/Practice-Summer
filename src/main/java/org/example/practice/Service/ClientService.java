@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class ClientService implements BaseService<ClientDto>{
+public class ClientService{
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -25,7 +25,7 @@ public class ClientService implements BaseService<ClientDto>{
     @Autowired
     public ClientService(ClientRepository clientRepository, LoyaltyCardRepository loyaltyCardRepository) {
         this.clientRepository = clientRepository;
-        this.loyaltyCardRepository = loyaltyCardRepository; // Инициализируем через конструктор
+        this.loyaltyCardRepository = loyaltyCardRepository;
     }
 
     public List<Client> findAllClientsWithLoyaltyCard() {
@@ -73,29 +73,5 @@ public class ClientService implements BaseService<ClientDto>{
 
             loyaltyCardRepository.update(card);
         }
-    }
-
-    @Transactional
-    @Override
-    public void create(ClientDto clientDto) {
-        entityManager.persist(clientDto);
-    }
-
-    @Transactional
-    @Override
-    public List<ClientDto> getAll() {
-        return entityManager.createQuery("from Client", ClientDto.class).getResultList();
-    }
-
-    @Transactional
-    @Override
-    public ClientDto getById(int id) {
-        return entityManager.find(ClientDto.class, id);
-    }
-
-    @Transactional
-    @Override
-    public void update(ClientDto clientDto) {
-        entityManager.merge(clientDto);
     }
 }

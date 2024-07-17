@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class BranchOfTheOrganizationService implements BaseService<BranchOfTheOrganizationDto> {
+public class BranchOfTheOrganizationService {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -21,29 +21,6 @@ public class BranchOfTheOrganizationService implements BaseService<BranchOfTheOr
     @Autowired
     public BranchOfTheOrganizationService(BranchOfTheOrganizationRepository branchRepo) {
         this.branchRepo = branchRepo;
-    }
-    @Transactional
-    @Override
-    public void create(BranchOfTheOrganizationDto branchOfTheOrganizationDto) {
-        entityManager.merge(branchOfTheOrganizationDto);
-    }
-
-    @Transactional
-    @Override
-    public List<BranchOfTheOrganizationDto> getAll() {
-        return entityManager.createQuery("from BranchOfTheOrganization", BranchOfTheOrganizationDto.class).getResultList();
-    }
-
-    @Transactional
-    @Override
-    public BranchOfTheOrganizationDto getById(int id) {
-        return entityManager.find(BranchOfTheOrganizationDto.class, id);
-    }
-
-    @Transactional
-    @Override
-    public void update(BranchOfTheOrganizationDto branchOfTheOrganizationDto) {
-        entityManager.merge(branchOfTheOrganizationDto);
     }
 
     public List<Object[]> findBranchProfits() {
