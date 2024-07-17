@@ -1,23 +1,36 @@
-
 package org.example.practice.Repositories;
 
+import jakarta.persistence.Query;
 import org.example.practice.Table.Employee;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
-import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+public class EmployeeRepository extends BaseRepository<Employee> {
 
-    @Query("SELECT e FROM Employee e JOIN e.branchOfTheOrganization b WHERE b.nameBranch = :nameBranch")
-    List<Employee> findEmployeesByBranchName(@Param("nameBranch") String nameBranch);
+    public EmployeeRepository() {
+        super(Employee.class);
+    }
 
-    @Modifying
-    @Query("UPDATE Employee e SET e.wages = e.wages * 1.05 WHERE e.branchOfTheOrganization.nameBranch = :nameBranch")
-    int updateEmployeeSalariesByBranchName(@Param("nameBranch") String nameBranch);
+    public List<Employee> findEmployeesByBranchName(String nameBranch) {
+        TypedQuery<Employee> query = entityManager.createQuery(
+                "SELECT e FROM Employee e JOIN e.branchOfTheOrganization b WHERE b.nameBranch = :nameBranch",
+                Employee.class);
+        query.setParameter("nameBranch", nameBranch);
+        return query.getResultList();
+    }
+
+    @Transactional
+    public int updateEmployeeSalariesByBranchName(String nameBranch) {
+        // Создаём экземпляр Query, а не TypedQuery, поскольку это запрос на обновление
+        Query query = entityManager.createQuery(
+                "UPDATE Employee e SET e.wages = e.wages * 1.05 WHERE e.branchOfTheOrganization.nameBranch = :nameBranch");
+        query.setParameter("nameBranch", nameBranch);
+        // Выполняем обновление и возвращаем количество обновлённых записей
+        return query.executeUpdate();
+    }
 
 }
