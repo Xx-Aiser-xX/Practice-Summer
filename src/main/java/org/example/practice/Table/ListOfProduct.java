@@ -22,6 +22,10 @@ public class ListOfProduct extends BaseEntity {
         this.theQuantityOfTheProduct = theQuantityOfTheProduct;
     }
 
+    public ListOfProduct() {
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_товара")
