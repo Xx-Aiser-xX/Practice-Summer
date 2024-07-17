@@ -26,6 +26,10 @@ public class Order extends BaseEntity {
         this.theQuantityOfTheProduct = theQuantityOfTheProduct;
     }
 
+    public Order() {
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_заказа")

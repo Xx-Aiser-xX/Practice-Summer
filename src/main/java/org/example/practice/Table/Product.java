@@ -18,6 +18,10 @@ public class Product  extends BaseEntity{
         this.price = price;
     }
 
+    public Product() {
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "код_товара")

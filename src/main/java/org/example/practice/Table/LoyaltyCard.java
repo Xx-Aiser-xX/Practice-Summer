@@ -16,6 +16,11 @@ public class LoyaltyCard extends BaseEntity {
         this.contactDetails = contactDetails;
         this.ownerStatus = ownerStatus;
     }
+
+    public LoyaltyCard() {
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_карты_лояльности")

@@ -21,6 +21,10 @@ public class Human extends BaseEntity {
         this.patronymic = patronymic;
     }
 
+    public Human() {
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_человека")

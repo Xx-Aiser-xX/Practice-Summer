@@ -30,6 +30,10 @@ public class Employee extends BaseEntity {
         this.birthday = birthday;
     }
 
+    public Employee() {
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_сотрудника")

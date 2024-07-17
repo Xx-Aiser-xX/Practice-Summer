@@ -5,7 +5,7 @@ import org.example.practice.Table.BaseEntity;
 import org.example.practice.Table.Employee;
 import org.example.practice.Table.ListOfProduct;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "изготавливает")
@@ -13,19 +13,23 @@ public class Manufactures extends BaseEntity {
     private int id;
     private Employee employee;
     private ListOfProduct listOfProduct;
-    private Date date;
-    private int quantityOfGoodsProduced;
-    private Date expirationDate;
+    private Timestamp date;
+    private Integer quantityOfGoodsProduced;
+    private Timestamp expirationDate;
 
 
     public Manufactures(int id, Employee employee, ListOfProduct listOfProduct,
-                        Date date, int quantityOfGoodsProduced, Date expirationDate){
+                        Timestamp date, int quantityOfGoodsProduced, Timestamp expirationDate){
         this.id = id;
         this.employee = employee;
         this.listOfProduct = listOfProduct;
         this.date = date;
         this.quantityOfGoodsProduced = quantityOfGoodsProduced;
         this.expirationDate = expirationDate;
+    }
+
+    public Manufactures() {
+
     }
 
     @Id
@@ -57,26 +61,26 @@ public class Manufactures extends BaseEntity {
     }
 
     @Column(name = "дата")
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
     @Column(name = "кол_во_произведённого_товара")
-    public int getQuantityOfGoodsProduced() {
+    public Integer getQuantityOfGoodsProduced() {
         return quantityOfGoodsProduced;
     }
-    public void setQuantityOfGoodsProduced(int quantityOfGoodsProduced) {
+    public void setQuantityOfGoodsProduced(Integer quantityOfGoodsProduced) {
         this.quantityOfGoodsProduced = quantityOfGoodsProduced;
     }
 
     @Column(name = "срок_годности")
-    public Date getExpirationDate() {
+    public Timestamp getExpirationDate() {
         return expirationDate;
     }
-    public void setExpirationDate(Date expirationDate) {
+    public void setExpirationDate(Timestamp expirationDate) {
         this.expirationDate = expirationDate;
     }
 }

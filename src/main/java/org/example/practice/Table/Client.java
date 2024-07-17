@@ -20,6 +20,10 @@ public class Client extends BaseEntity {
         this.loyaltyCard = loyaltyCard;
     }
 
+    public Client() {
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_клиента")

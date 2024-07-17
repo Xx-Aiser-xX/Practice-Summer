@@ -21,6 +21,10 @@ public class BranchOfTheOrganization  extends BaseEntity{
         this.address = address;
     }
 
+    public BranchOfTheOrganization() {
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "филиал")
