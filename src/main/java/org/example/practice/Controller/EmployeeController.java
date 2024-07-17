@@ -1,5 +1,6 @@
 package org.example.practice.Controller;
 
+import org.example.practice.Dto.EmployeeDto;
 import org.example.practice.Table.Employee;
 import org.example.practice.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,28 +35,23 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public List<Employee> getAllEmployees() {
-        return employeeService.findAll();
+    public List<EmployeeDto> getAllEmployees() {
+        return employeeService.getAll();
     }
 
     @GetMapping("/g{id}")
-    public Employee getEmployeeById(@PathVariable int id) {
-        return employeeService.findById(id);
+    public EmployeeDto getEmployeeById(@PathVariable int id) {
+        return employeeService.getById(id);
     }
 
     @PostMapping
-    public void saveEmployee(@RequestBody Employee employee) {
-        employeeService.save(employee);
+    public void saveEmployee(@RequestBody EmployeeDto employeeDto) {
+        employeeService.create(employeeDto);
     }
 
     @PutMapping("/{id}")
-    public void updateEmployee(@PathVariable int id, @RequestBody Employee employee) {
-        employee.setId(id);
-        employeeService.update(employee);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteEmployee(@PathVariable int id) {
-        employeeService.deleteById(id);
+    public void updateEmployee(@PathVariable int id, @RequestBody EmployeeDto employeeDto) {
+        employeeDto.setId(id);
+        employeeService.update(employeeDto);
     }
 }
