@@ -1,13 +1,11 @@
-package org.example.practice.Dto;
+package org.example.practice.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.example.practice.Relationship.Manufactures;
-import org.example.practice.Table.BranchOfTheOrganization;
-import org.example.practice.Table.Human;
+import org.example.practice.models.BranchOfTheOrganization;
+import org.example.practice.models.Human;
 
 import java.util.Date;
-import java.util.Set;
 
 @Getter
 @Setter

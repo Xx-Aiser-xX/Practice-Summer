@@ -1,10 +1,7 @@
-package org.example.practice.Dto;
+package org.example.practice.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.example.practice.Table.Employee;
-
-import java.util.Set;
 
 @Getter
 @Setter
