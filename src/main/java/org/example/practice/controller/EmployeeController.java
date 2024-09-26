@@ -1,20 +1,14 @@
-package org.example.practice.Controller;
+package org.example.practice.controller;
 
-import org.example.practice.Dto.EmployeeDto;
-import org.example.practice.Table.Employee;
-import org.example.practice.Service.EmployeeService;
+import org.example.practice.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
-
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/employees")
 public class EmployeeController {
 
-    @Autowired
     private EmployeeService employeeService;
 
     @Autowired
@@ -22,7 +16,7 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @PutMapping("/increase-salaries")
+    @PutMapping("/increase_salaries")
     public ResponseEntity<String> increaseSalariesForMostProfitableBranch() {
         try {
             String branchName = employeeService.increaseSalariesForMostProfitableBranch();

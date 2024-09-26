@@ -1,22 +1,16 @@
-package org.example.practice.Service;
+package org.example.practice.service;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import org.example.practice.Dto.BranchOfTheOrganizationDto;
-import org.example.practice.Repositories.BranchOfTheOrganizationRepository;
+import org.example.practice.exceptions.BranchNotFoundException;
+import org.example.practice.repositories.BranchOfTheOrganizationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 public class BranchOfTheOrganizationService {
 
-    @PersistenceContext
-    private EntityManager entityManager;
     private final BranchOfTheOrganizationRepository branchRepo;
-
 
     @Autowired
     public BranchOfTheOrganizationService(BranchOfTheOrganizationRepository branchRepo) {
@@ -24,8 +18,10 @@ public class BranchOfTheOrganizationService {
     }
 
     public List<Object[]> findBranchProfits() {
+        List<Object[]> profits = branchRepo.findBranchProfits();
+        if (profits.isEmpty()) {
+            throw new BranchNotFoundException("No branches found or profits not available.");
+        }
         return branchRepo.findBranchProfits();
     }
-
-
 }

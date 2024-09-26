@@ -1,4 +1,4 @@
-package org.example.practice.Config;
+package org.example.practice.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
