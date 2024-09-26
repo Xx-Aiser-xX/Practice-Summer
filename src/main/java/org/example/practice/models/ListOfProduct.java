@@ -1,14 +1,12 @@
-package org.example.practice.Table;
+package org.example.practice.models;
 
 
 import jakarta.persistence.*;
-import org.example.practice.Relationship.Manufactures;
-import org.example.practice.Relationship.Order;
 
 import java.util.Set;
 
 @Entity
-@Table(name = "список_товаров")
+@Table(name = "list_of_goods")
 public class ListOfProduct extends BaseEntity {
     private int id;
     private Product product;
@@ -22,19 +20,19 @@ public class ListOfProduct extends BaseEntity {
         this.theQuantityOfTheProduct = theQuantityOfTheProduct;
     }
 
-    public ListOfProduct() {
+    protected ListOfProduct() {
 
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_товара")
+    @Column(name = "id_product")
     public int getId() { return id;}
     public void setId(int id) { this.id = id;}
 
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "код_товара", referencedColumnName = "код_товара")
+    @JoinColumn(name = "product_code", referencedColumnName = "product_code")
     public Product getProduct() {
         return product;
     }
@@ -43,7 +41,7 @@ public class ListOfProduct extends BaseEntity {
     }
 
 
-    @Column(name = "кол_во_товара")
+    @Column(name = "number_of_items")
     public int getTheQuantityOfTheProduct() { return theQuantityOfTheProduct;}
     public void setTheQuantityOfTheProduct(int theQuantityOfTheProduct) {
         this.theQuantityOfTheProduct = theQuantityOfTheProduct;

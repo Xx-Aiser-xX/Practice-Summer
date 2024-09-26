@@ -1,14 +1,11 @@
-package org.example.practice.Relationship;
+package org.example.practice.models;
 
 import jakarta.persistence.*;
-import org.example.practice.Table.BaseEntity;
-import org.example.practice.Table.Client;
-import org.example.practice.Table.ListOfProduct;
 
 import java.util.Date;
 
 @Entity
-@Table(name = "заказ")
+@Table(name = "orders")
 public class Order extends BaseEntity {
     private int id;
     private Client client;
@@ -26,13 +23,13 @@ public class Order extends BaseEntity {
         this.theQuantityOfTheProduct = theQuantityOfTheProduct;
     }
 
-    public Order() {
+    protected Order() {
 
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_заказа")
+    @Column(name = "id_order")
     public int getId() {
         return id;
     }
@@ -42,7 +39,7 @@ public class Order extends BaseEntity {
 
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_клиента", referencedColumnName = "id_клиента")
+    @JoinColumn(name = "id_client", referencedColumnName = "id_client")
     public Client getClient() {
         return client;
     }
@@ -51,7 +48,7 @@ public class Order extends BaseEntity {
     }
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_товара", referencedColumnName = "id_товара")
+    @JoinColumn(name = "id_product", referencedColumnName = "id_product")
     public ListOfProduct getListOfProduct() {
         return listOfProduct;
     }
@@ -59,7 +56,7 @@ public class Order extends BaseEntity {
         this.listOfProduct = listOfProduct;
     }
 
-    @Column(name = "дата")
+    @Column(name = "date")
     public Date getDate() {
         return date;
     }
@@ -67,7 +64,7 @@ public class Order extends BaseEntity {
         this.date = date;
     }
 
-    @Column(name = "кол_во_товара")
+    @Column(name = "number_of_items")
     public int getTheQuantityOfTheProduct() {
         return theQuantityOfTheProduct;
     }

@@ -1,14 +1,11 @@
-package org.example.practice.Relationship;
+package org.example.practice.models;
 
 import jakarta.persistence.*;
-import org.example.practice.Table.BaseEntity;
-import org.example.practice.Table.Employee;
-import org.example.practice.Table.ListOfProduct;
 
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "изготавливает")
+@Table(name = "manufactures")
 public class Manufactures extends BaseEntity {
     private int id;
     private Employee employee;
@@ -28,13 +25,13 @@ public class Manufactures extends BaseEntity {
         this.expirationDate = expirationDate;
     }
 
-    public Manufactures() {
+    protected Manufactures() {
 
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_партии")
+    @Column(name = "id_party")
     public int getId() {
         return id;
     }
@@ -43,7 +40,7 @@ public class Manufactures extends BaseEntity {
     }
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_сотрудника", referencedColumnName = "id_сотрудника")
+    @JoinColumn(name = "id_employee", referencedColumnName = "id_employee")
     public Employee getEmployee() {
         return employee;
     }
@@ -52,7 +49,7 @@ public class Manufactures extends BaseEntity {
     }
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_товара", referencedColumnName = "id_товара")
+    @JoinColumn(name = "id_product", referencedColumnName = "id_product")
     public ListOfProduct getListOfProduct() {
         return listOfProduct;
     }
@@ -60,7 +57,7 @@ public class Manufactures extends BaseEntity {
         this.listOfProduct = listOfProduct;
     }
 
-    @Column(name = "дата")
+    @Column(name = "date")
     public Timestamp getDate() {
         return date;
     }
@@ -68,7 +65,7 @@ public class Manufactures extends BaseEntity {
         this.date = date;
     }
 
-    @Column(name = "кол_во_произведённого_товара")
+    @Column(name = "number_of_manufactured_goods")
     public Integer getQuantityOfGoodsProduced() {
         return quantityOfGoodsProduced;
     }
@@ -76,7 +73,7 @@ public class Manufactures extends BaseEntity {
         this.quantityOfGoodsProduced = quantityOfGoodsProduced;
     }
 
-    @Column(name = "срок_годности")
+    @Column(name = "expiration_date")
     public Timestamp getExpirationDate() {
         return expirationDate;
     }

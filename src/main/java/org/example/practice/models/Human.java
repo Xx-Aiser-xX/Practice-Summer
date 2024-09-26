@@ -1,11 +1,11 @@
-package org.example.practice.Table;
+package org.example.practice.models;
 
 import jakarta.persistence.*;
 
 import java.util.Set;
 
 @Entity
-@Table(name = "человек")
+@Table(name = "human")
 public class Human extends BaseEntity {
     private int id;
     private String firstName;
@@ -21,25 +21,25 @@ public class Human extends BaseEntity {
         this.patronymic = patronymic;
     }
 
-    public Human() {
+    protected Human() {
 
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_человека")
+    @Column(name = "id_human")
     public int getId() { return id;}
     public void setId(int id) { this.id = id;}
 
-    @Column(name = "имя")
+    @Column(name = "name")
     public String getFirstName() { return firstName;}
     public void setFirstName(String firstName) { this.firstName = firstName;}
 
-    @Column(name = "фамилия")
+    @Column(name = "surname")
     public String getLastName() { return lastName;}
     public void setLastName(String lastName) { this.lastName = lastName;}
 
-    @Column(name = "отчество")
+    @Column(name = "patronymic")
     public String getPatronymic() { return patronymic;}
     public void setPatronymic(String patronymic) { this.patronymic = patronymic;}
 

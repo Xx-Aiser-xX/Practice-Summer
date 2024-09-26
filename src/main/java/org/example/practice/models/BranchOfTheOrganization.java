@@ -1,10 +1,10 @@
-package org.example.practice.Table;
+package org.example.practice.models;
 
 import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "филиал_организации")
+@Table(name = "branch_of_the_organization")
 public class BranchOfTheOrganization  extends BaseEntity{
     private int id;
     private int mainBranch;
@@ -21,29 +21,29 @@ public class BranchOfTheOrganization  extends BaseEntity{
         this.address = address;
     }
 
-    public BranchOfTheOrganization() {
+    protected BranchOfTheOrganization() {
 
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "филиал")
+    @Column(name = "branch")
     public int getId() { return id;}
     public void setId(int id) { this.id = id;}
 
-    @Column(name = "главный_филиал")
+    @Column(name = "main_file")
     public int getMainBranch() { return mainBranch;}
     public void setMainBranch(int mainBranch) { this.mainBranch = mainBranch;}
 
-    @Column(name = "название_филиала")
+    @Column(name = "filial_name")
     public String getNameBranch() { return nameBranch;}
     public void setNameBranch(String nameBranch) { this.nameBranch = nameBranch;}
 
-    @Column(name = "телефон")
+    @Column(name = "phone")
     public String getPhone() { return phone;}
     public void setPhone(String phone) { this.phone = phone;}
 
-    @Column(name = "адрес")
+    @Column(name = "address")
     public String getAddress() { return address;}
     public void setAddress(String address) { this.address = address;}
 

@@ -1,9 +1,9 @@
-package org.example.practice.Table;
+package org.example.practice.models;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "карта_лояльности")
+@Table(name = "loyalty_card")
 public class LoyaltyCard extends BaseEntity {
     private int id;
     private int points;
@@ -17,26 +17,26 @@ public class LoyaltyCard extends BaseEntity {
         this.ownerStatus = ownerStatus;
     }
 
-    public LoyaltyCard() {
+    protected LoyaltyCard() {
 
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_карты_лояльности")
+    @Column(name = "id_loyalty_card")
     public int getId() { return id;}
     public void setId(int id) { this.id = id;}
 
 
-    @Column(name = "кол_во_баллов")
+    @Column(name = "number_of_points")
     public int getPoints() { return points;}
     public void setPoints(int points) { this.points = points;}
 
-    @Column(name = "контактные_данные_владельца")
+    @Column(name = "contact_details")
     public String getContactDetails() { return contactDetails;}
     public void setContactDetails(String contactDetails) { this.contactDetails = contactDetails;}
 
-    @Column(name = "статус_владельца")
+    @Column(name = "owner_status")
     public String getOwnerStatus() { return ownerStatus;}
     public void setOwnerStatus(String ownerStatus) { this.ownerStatus = ownerStatus;}
 

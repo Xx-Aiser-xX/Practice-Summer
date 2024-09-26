@@ -1,11 +1,11 @@
-package org.example.practice.Table;
+package org.example.practice.models;
 
 import jakarta.persistence.*;
 
 import java.util.Set;
 
 @Entity
-@Table(name = "товар")
+@Table(name = "product")
 public class Product  extends BaseEntity{
     private int id;
     private String name;
@@ -18,21 +18,21 @@ public class Product  extends BaseEntity{
         this.price = price;
     }
 
-    public Product() {
+    protected Product() {
 
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "код_товара")
+    @Column(name = "product_code")
     public int getId() { return id;}
     public void setId(int id) { this.id = id;}
 
-    @Column(name = "название_товара")
+    @Column(name = "product_name")
     public String getName() { return name;}
     public void setName(String name) { this.name = name;}
 
-    @Column(name = "цена")
+    @Column(name = "price")
     public double getPrice() { return price;}
     public void setPrice(double price) { this.price = price;}
 

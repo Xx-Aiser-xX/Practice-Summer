@@ -1,4 +1,4 @@
-package org.example.practice.Table;
+package org.example.practice.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;

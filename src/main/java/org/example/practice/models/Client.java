@@ -1,38 +1,35 @@
-package org.example.practice.Table;
-
+package org.example.practice.models;
 
 import jakarta.persistence.*;
-import org.example.practice.Relationship.Order;
 
 import java.util.Set;
 
 @Entity
-@Table(name = "клиент")
+@Table(name = "client")
 public class Client extends BaseEntity {
     private int id;
     private Human human;
     private LoyaltyCard loyaltyCard;
     private Set<Order> order;
 
-
     public Client(Human human, LoyaltyCard loyaltyCard){
         this.human = human;
         this.loyaltyCard = loyaltyCard;
     }
 
-    public Client() {
+    protected Client() {
 
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_клиента")
+    @Column(name = "id_client")
     public int getId() { return id;}
     public void setId(int id) { this.id = id;}
 
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_человека", referencedColumnName = "id_человека")
+    @JoinColumn(name = "id_human", referencedColumnName = "id_human")
     public Human getHuman() {
         return human;
     }
@@ -42,7 +39,7 @@ public class Client extends BaseEntity {
 
 
     @OneToOne
-    @JoinColumn(name = "id_карты_лояльности")
+    @JoinColumn(name = "id_loyalty_card")
     public LoyaltyCard getLoyaltyCard() {
         return loyaltyCard;
     }

@@ -1,13 +1,12 @@
-package org.example.practice.Table;
+package org.example.practice.models;
 
 import jakarta.persistence.*;
-import org.example.practice.Relationship.Manufactures;
 
 import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "сотрудник")
+@Table(name = "employee")
 public class Employee extends BaseEntity {
     private int id;
     private BranchOfTheOrganization branchOfTheOrganization;
@@ -30,19 +29,19 @@ public class Employee extends BaseEntity {
         this.birthday = birthday;
     }
 
-    public Employee() {
+    protected Employee() {
 
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_сотрудника")
+    @Column(name = "id_employee")
     public int getId() { return id;}
     public void setId(int id) { this.id = id;}
 
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "филиал", referencedColumnName = "филиал")
+    @JoinColumn(name = "branch", referencedColumnName = "branch")
     public BranchOfTheOrganization getBranchOfTheOrganization() {
         return branchOfTheOrganization;
     }
@@ -51,7 +50,7 @@ public class Employee extends BaseEntity {
     }
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_человека", referencedColumnName = "id_человека")
+    @JoinColumn(name = "id_human", referencedColumnName = "id_human")
     public Human getHuman() {
         return human;
     }
@@ -60,22 +59,22 @@ public class Employee extends BaseEntity {
     }
 
 
-    @Column(name = "дата_найма")
+    @Column(name = "date_of_hiring")
     @Temporal(TemporalType.DATE)
     public Date getDataOfHiring() { return dataOfHiring;}
     public void setDataOfHiring(Date dataOfHiring) {
         this.dataOfHiring = dataOfHiring;
     }
 
-    @Column(name = "заработная_плата")
+    @Column(name = "salary")
     public double getWages() { return wages;}
     public void setWages(double wages) { this.wages = wages;}
 
-    @Column(name = "должность")
+    @Column(name = "post")
     public String getPost() { return post;}
     public void setPost(String post) { this.post = post;}
 
-    @Column(name = "дата_рождения")
+    @Column(name = "birthdate")
     @Temporal(TemporalType.DATE)
     public Date getBirthday() { return birthday;}
     public void setBirthday(Date birthday) { this.birthday = birthday;}
