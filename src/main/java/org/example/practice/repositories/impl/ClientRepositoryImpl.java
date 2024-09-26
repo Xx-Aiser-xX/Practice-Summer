@@ -1,19 +1,20 @@
-package org.example.practice.Repositories;
+package org.example.practice.repositories.impl;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import org.example.practice.repositories.ClientRepository;
+import org.example.practice.models.Client;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-import org.example.practice.Table.Client;
-
 import java.util.List;
 
 @Repository
-public class ClientRepository extends BaseRepository<Client> {
+public class ClientRepositoryImpl implements ClientRepository {
 
-    public ClientRepository() {
-        super(Client.class);
-    }
+    @PersistenceContext
+    private EntityManager entityManager;
 
+    @Override
     public List<Client> findAllClientsWithLoyaltyCard() {
         try {
             TypedQuery<Client> query = entityManager.createQuery(
@@ -25,6 +26,7 @@ public class ClientRepository extends BaseRepository<Client> {
         }
     }
 
+    @Override
     public List<Client> findTopClientsByOrderCount(int topN) {
         try {
             TypedQuery<Client> query = entityManager.createQuery(
@@ -41,6 +43,7 @@ public class ClientRepository extends BaseRepository<Client> {
         }
     }
 
+    @Override
     public List<Object[]> findTotalSpentByClients() {
         try {
             TypedQuery<Object[]> query = entityManager.createQuery(

@@ -1,21 +1,20 @@
-package org.example.practice.Repositories;
+package org.example.practice.repositories.impl;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-import jakarta.transaction.Transactional;
-import org.example.practice.Table.BranchOfTheOrganization;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import org.example.practice.repositories.BranchOfTheOrganizationRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class BranchOfTheOrganizationRepository extends BaseRepository<BranchOfTheOrganization>{
+public class BranchOfTheOrganizationRepositoryImpl implements BranchOfTheOrganizationRepository {
 
-    public BranchOfTheOrganizationRepository() {
-        super(BranchOfTheOrganization.class);
-    }
+    @PersistenceContext
+    private EntityManager entityManager;
 
+    @Override
     public List<Object[]> findBranchProfits() {
         try {
             TypedQuery<Object[]> query = entityManager.createQuery(

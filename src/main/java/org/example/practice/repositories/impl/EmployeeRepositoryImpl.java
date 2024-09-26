@@ -1,20 +1,22 @@
-package org.example.practice.Repositories;
+package org.example.practice.repositories.impl;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
-import org.example.practice.Table.Employee;
 import jakarta.persistence.TypedQuery;
+import org.example.practice.repositories.EmployeeRepository;
+import org.example.practice.models.Employee;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
-public class EmployeeRepository extends BaseRepository<Employee> {
+public class EmployeeRepositoryImpl implements EmployeeRepository {
 
-    public EmployeeRepository() {
-        super(Employee.class);
-    }
+    @PersistenceContext
+    private EntityManager entityManager;
 
+    @Override
     public List<Employee> findEmployeesByBranchName(String nameBranch) {
         TypedQuery<Employee> query = entityManager.createQuery(
                 "SELECT e FROM Employee e JOIN e.branchOfTheOrganization b WHERE b.nameBranch = :nameBranch",
@@ -23,6 +25,7 @@ public class EmployeeRepository extends BaseRepository<Employee> {
         return query.getResultList();
     }
 
+    @Override
     public int updateEmployeeSalariesByBranchName(String nameBranch) {
         Query query = entityManager.createQuery(
                 "UPDATE Employee e SET e.wages = e.wages * 1.05 WHERE e.branchOfTheOrganization.nameBranch = :nameBranch");
