@@ -33,6 +33,7 @@ public class Employee extends BaseEntity {
 
     }
 
+    @Override
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_employee")

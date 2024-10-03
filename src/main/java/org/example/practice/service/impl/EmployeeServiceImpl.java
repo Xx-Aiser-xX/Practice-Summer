@@ -23,6 +23,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.branchService = branchService;
     }
 
+    @Override
     @Transactional
     public String increaseSalariesForMostProfitableBranch() {
         List<Object[]> branchProfits = branchService.findBranchProfits();

@@ -21,6 +21,7 @@ public class Client extends BaseEntity {
 
     }
 
+    @Override
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_client")

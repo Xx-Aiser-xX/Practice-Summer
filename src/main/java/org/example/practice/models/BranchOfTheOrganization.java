@@ -25,6 +25,7 @@ public class BranchOfTheOrganization  extends BaseEntity{
 
     }
 
+    @Override
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "branch")

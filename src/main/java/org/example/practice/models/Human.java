@@ -25,6 +25,7 @@ public class Human extends BaseEntity {
 
     }
 
+    @Override
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_human")

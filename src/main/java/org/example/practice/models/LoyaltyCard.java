@@ -21,6 +21,7 @@ public class LoyaltyCard extends BaseEntity {
 
     }
 
+    @Override
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_loyalty_card")

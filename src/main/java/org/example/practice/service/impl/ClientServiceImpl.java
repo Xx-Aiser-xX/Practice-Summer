@@ -36,7 +36,7 @@ public class ClientServiceImpl implements ClientService {
         this.clientReadRepository = clientReadRepository;
     }
 
-
+    @Override
     public List<ClientDto> findAllClientsWithLoyaltyCard() {
         List<Client> clients = clientRepository.findAllClientsWithLoyaltyCard();
         if (clients.isEmpty()) {
@@ -47,6 +47,7 @@ public class ClientServiceImpl implements ClientService {
                 .collect(Collectors.toList());
     }
 
+    @Override
     @Transactional
     public String rewardTopClientsWithPoints(int points, int topN) {
         List<Client> topClients = clientRepository.findTopClientsByOrderCount(topN);
@@ -63,6 +64,7 @@ public class ClientServiceImpl implements ClientService {
         return "Добавлено " + points + " баллов " + topN + " самым активным клиентам.";
     }
 
+    @Override
     @Transactional
     public void updateClientStatusesBasedOnTotalSpent() {
         List<Object[]> totalSpentByClients = clientRepository.findTotalSpentByClients();

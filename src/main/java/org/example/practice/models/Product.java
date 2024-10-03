@@ -22,6 +22,7 @@ public class Product  extends BaseEntity{
 
     }
 
+    @Override
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_code")

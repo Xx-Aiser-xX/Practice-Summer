@@ -18,6 +18,7 @@ public class BranchOfTheOrganizationServiceImpl implements BranchOfTheOrganizati
         this.branchRepo = branchRepo;
     }
 
+    @Override
     public List<Object[]> findBranchProfits() {
         List<Object[]> profits = branchRepo.findBranchProfits();
         if (profits.isEmpty()) {
