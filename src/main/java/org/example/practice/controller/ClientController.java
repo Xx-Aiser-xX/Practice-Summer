@@ -19,7 +19,7 @@ public class ClientController {
         this.clientService = clientService;
     }
 
-    @PostMapping("/reward-top-clients")
+    @PutMapping("/reward-top-clients")
     public ResponseEntity<String> rewardTopClients() {
         String message = clientService.rewardTopClientsWithPoints(1000, 5);
         return ResponseEntity.ok(message);
@@ -30,7 +30,7 @@ public class ClientController {
         return clientService.findAllClientsWithLoyaltyCard();
     }
 
-    @PostMapping("/update-statuses")
+    @PutMapping("/update-statuses")
     public ResponseEntity<String> updateClientStatuses() {
         clientService.updateClientStatusesBasedOnTotalSpent();
         return ResponseEntity.ok("Статусы клиентов были успешно обновлены");

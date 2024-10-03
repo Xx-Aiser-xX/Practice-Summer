@@ -10,12 +10,11 @@ public class UpdateRepository<Entity> {
     @PersistenceContext
     protected EntityManager entityManager;
 
-    public Entity update(Entity entity) {
+    public void update(Entity entity) {
         try {
-            return entityManager.merge(entity);
+            entityManager.merge(entity);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
     }
 }

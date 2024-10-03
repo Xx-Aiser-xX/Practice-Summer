@@ -11,13 +11,11 @@ public class CreateRepository<Entity> {
     @PersistenceContext
     protected EntityManager entityManager;
 
-    public Entity create(Entity entity) {
+    public void create(Entity entity) {
         try {
             entityManager.persist(entity);
-            return entity;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
     }
 }
