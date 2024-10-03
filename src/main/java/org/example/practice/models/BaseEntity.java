@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 public abstract class BaseEntity {
-    private int id;
+    protected int id;
 
     @Id
     @Column(insertable = false, name = "id")

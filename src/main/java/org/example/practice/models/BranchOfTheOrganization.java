@@ -6,7 +6,7 @@ import java.util.Set;
 @Entity
 @Table(name = "branch_of_the_organization")
 public class BranchOfTheOrganization  extends BaseEntity{
-    private int id;
+
     private int mainBranch;
     private String nameBranch;
     private String phone;

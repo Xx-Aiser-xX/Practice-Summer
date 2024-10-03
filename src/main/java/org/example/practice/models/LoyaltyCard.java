@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "loyalty_card")
 public class LoyaltyCard extends BaseEntity {
-    private int id;
+
     private int points;
     private String contactDetails;
     private String ownerStatus;

@@ -7,7 +7,7 @@ import java.util.Set;
 @Entity
 @Table(name = "product")
 public class Product  extends BaseEntity{
-    private int id;
+
     private String name;
     private double price;
     private Set<ListOfProduct> listOfProducts;

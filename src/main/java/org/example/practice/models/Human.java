@@ -7,7 +7,7 @@ import java.util.Set;
 @Entity
 @Table(name = "human")
 public class Human extends BaseEntity {
-    private int id;
+
     private String firstName;
     private String lastName;
     private String patronymic;

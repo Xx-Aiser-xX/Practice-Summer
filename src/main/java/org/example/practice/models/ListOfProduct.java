@@ -8,7 +8,7 @@ import java.util.Set;
 @Entity
 @Table(name = "list_of_goods")
 public class ListOfProduct extends BaseEntity {
-    private int id;
+
     private Product product;
     private int theQuantityOfTheProduct;
     private Set<Manufactures> manufactures;

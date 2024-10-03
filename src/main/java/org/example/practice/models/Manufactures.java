@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "manufactures")
 public class Manufactures extends BaseEntity {
-    private int id;
+
     private Employee employee;
     private ListOfProduct listOfProduct;
     private Timestamp date;

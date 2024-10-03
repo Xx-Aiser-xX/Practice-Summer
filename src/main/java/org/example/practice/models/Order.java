@@ -7,7 +7,7 @@ import java.util.Date;
 @Entity
 @Table(name = "orders")
 public class Order extends BaseEntity {
-    private int id;
+
     private Client client;
     private ListOfProduct listOfProduct;
     private Date date;

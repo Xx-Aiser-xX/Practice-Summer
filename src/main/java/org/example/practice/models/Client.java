@@ -7,7 +7,7 @@ import java.util.Set;
 @Entity
 @Table(name = "client")
 public class Client extends BaseEntity {
-    private int id;
+
     private Human human;
     private LoyaltyCard loyaltyCard;
     private Set<Order> order;
