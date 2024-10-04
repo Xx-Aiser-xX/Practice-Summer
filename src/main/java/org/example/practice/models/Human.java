@@ -45,7 +45,7 @@ public class Human extends BaseEntity {
     public void setPatronymic(String patronymic) { this.patronymic = patronymic;}
 
 
-    @OneToMany(mappedBy = "human", targetEntity = Employee.class, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "human", targetEntity = Employee.class)
     public Set<Employee> getEmployee() {
         return employee;
     }
@@ -54,7 +54,7 @@ public class Human extends BaseEntity {
     }
 
 
-    @OneToMany(mappedBy = "human", targetEntity = Client.class, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "human", targetEntity = Client.class)
     public Set<Client> getClient() {
         return client;
     }

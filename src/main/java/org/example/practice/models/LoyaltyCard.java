@@ -41,7 +41,7 @@ public class LoyaltyCard extends BaseEntity {
     public String getOwnerStatus() { return ownerStatus;}
     public void setOwnerStatus(String ownerStatus) { this.ownerStatus = ownerStatus;}
 
-    @OneToOne(mappedBy = "loyaltyCard", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "loyaltyCard")
     public Client getClient() {
         return client;
     }

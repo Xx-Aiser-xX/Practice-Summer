@@ -80,7 +80,7 @@ public class Employee extends BaseEntity {
     public Date getBirthday() { return birthday;}
     public void setBirthday(Date birthday) { this.birthday = birthday;}
 
-    @OneToMany(mappedBy = "employee", targetEntity = Manufactures.class, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "employee", targetEntity = Manufactures.class)
     public Set<Manufactures> getManufactures() {
         return manufactures;
     }

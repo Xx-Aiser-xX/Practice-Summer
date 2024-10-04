@@ -48,7 +48,7 @@ public class Client extends BaseEntity {
         this.loyaltyCard = loyaltyCard;
     }
 
-    @OneToMany(mappedBy = "client", targetEntity = Order.class, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "client", targetEntity = Order.class)
     public Set<Order> getOrder() {
         return order;
     }
