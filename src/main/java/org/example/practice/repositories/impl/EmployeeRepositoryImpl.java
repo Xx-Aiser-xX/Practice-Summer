@@ -3,7 +3,6 @@ package org.example.practice.repositories.impl;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
-import jakarta.persistence.TypedQuery;
 import org.example.practice.repositories.EmployeeRepository;
 import org.example.practice.models.Employee;
 import org.springframework.stereotype.Repository;
@@ -18,9 +17,8 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Override
     public List<Employee> findEmployeesByBranchName(String nameBranch) {
-        TypedQuery<Employee> query = entityManager.createQuery(
-                "SELECT e FROM Employee e JOIN e.branchOfTheOrganization b WHERE b.nameBranch = :nameBranch",
-                Employee.class);
+        Query query = entityManager.createQuery(
+                "SELECT e FROM Employee e JOIN e.branchOfTheOrganization b WHERE b.nameBranch = :nameBranch");
         query.setParameter("nameBranch", nameBranch);
         return query.getResultList();
     }

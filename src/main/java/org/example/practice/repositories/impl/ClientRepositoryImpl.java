@@ -2,7 +2,7 @@ package org.example.practice.repositories.impl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.Query;
 import org.example.practice.repositories.ClientRepository;
 import org.example.practice.models.Client;
 import org.springframework.stereotype.Repository;
@@ -17,8 +17,8 @@ public class ClientRepositoryImpl implements ClientRepository {
     @Override
     public List<Client> findAllClientsWithLoyaltyCard() {
         try {
-            TypedQuery<Client> query = entityManager.createQuery(
-                    "SELECT c FROM Client c WHERE c.loyaltyCard IS NOT NULL", Client.class);
+            Query query = entityManager.createQuery(
+                    "SELECT c FROM Client c WHERE c.loyaltyCard IS NOT NULL");
             return query.getResultList();
         } catch (Exception e) {
             e.printStackTrace();
@@ -29,12 +29,12 @@ public class ClientRepositoryImpl implements ClientRepository {
     @Override
     public List<Client> findTopClientsByOrderCount(int topN) {
         try {
-            TypedQuery<Client> query = entityManager.createQuery(
+            Query query = entityManager.createQuery(
                             "SELECT c FROM Client c " +
                                     "JOIN c.order o " +
                                     "WHERE c.loyaltyCard IS NOT NULL " +
                                     "GROUP BY c.id " +
-                                    "ORDER BY COUNT(o.id) DESC", Client.class)
+                                    "ORDER BY COUNT(o.id) DESC")
                     .setMaxResults(topN);
             return query.getResultList();
         } catch (Exception e) {
@@ -46,13 +46,13 @@ public class ClientRepositoryImpl implements ClientRepository {
     @Override
     public List<Object[]> findTotalSpentByClients() {
         try {
-            TypedQuery<Object[]> query = entityManager.createQuery(
+            Query query = entityManager.createQuery(
                     "SELECT c.id, SUM(o.listOfProduct.product.price * o.theQuantityOfTheProduct) " +
                             "FROM Client c " +
                             "JOIN c.order o " +
                             "JOIN o.listOfProduct lp " +
                             "JOIN lp.product p " +
-                            "GROUP BY c.id", Object[].class);
+                            "GROUP BY c.id");
             return query.getResultList();
         } catch (Exception e) {
             e.printStackTrace();

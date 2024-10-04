@@ -2,7 +2,7 @@ package org.example.practice.repositories.impl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.Query;
 import org.example.practice.repositories.BranchOfTheOrganizationRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +17,7 @@ public class BranchOfTheOrganizationRepositoryImpl implements BranchOfTheOrganiz
     @Override
     public List<Object[]> findBranchProfits() {
         try {
-            TypedQuery<Object[]> query = entityManager.createQuery(
+            Query query = entityManager.createQuery(
                     "SELECT b.nameBranch AS nameBranch, SUM(p.price * o.theQuantityOfTheProduct) AS profit " +
                             "FROM Order o " +
                             "JOIN o.listOfProduct lp " +
@@ -26,8 +26,7 @@ public class BranchOfTheOrganizationRepositoryImpl implements BranchOfTheOrganiz
                             "JOIN m.employee e " +
                             "JOIN e.branchOfTheOrganization b " +
                             "GROUP BY b.nameBranch " +
-                            "ORDER BY profit DESC",
-                    Object[].class
+                            "ORDER BY profit DESC"
             );
             return query.getResultList();
         } catch (Exception e) {
