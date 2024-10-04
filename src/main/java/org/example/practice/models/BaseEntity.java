@@ -2,7 +2,7 @@ package org.example.practice.models;
 
 import jakarta.persistence.*;
 
-@MappedSuperclass
+//@MappedSuperclass
 public abstract class BaseEntity {
     protected int id;
 
