@@ -45,8 +45,7 @@ public class Human extends BaseEntity {
     public void setPatronymic(String patronymic) { this.patronymic = patronymic;}
 
 
-    @OneToMany(mappedBy = "human", targetEntity = Employee.class,
-            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "human", targetEntity = Employee.class, cascade = CascadeType.ALL)
     public Set<Employee> getEmployee() {
         return employee;
     }
@@ -55,8 +54,7 @@ public class Human extends BaseEntity {
     }
 
 
-    @OneToMany(mappedBy = "human", targetEntity = Client.class,
-            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "human", targetEntity = Client.class, cascade = CascadeType.ALL)
     public Set<Client> getClient() {
         return client;
     }

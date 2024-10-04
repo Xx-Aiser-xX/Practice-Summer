@@ -37,8 +37,7 @@ public class Product  extends BaseEntity{
     public double getPrice() { return price;}
     public void setPrice(double price) { this.price = price;}
 
-    @OneToMany(mappedBy = "product", targetEntity = ListOfProduct.class,
-            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product", targetEntity = ListOfProduct.class, cascade = CascadeType.ALL)
     public Set<ListOfProduct> getListOfProducts() {
         return listOfProducts;
     }

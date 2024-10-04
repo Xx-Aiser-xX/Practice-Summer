@@ -48,8 +48,7 @@ public class BranchOfTheOrganization  extends BaseEntity{
     public String getAddress() { return address;}
     public void setAddress(String address) { this.address = address;}
 
-    @OneToMany(mappedBy = "branchOfTheOrganization", targetEntity = Employee.class,
-            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "branchOfTheOrganization", targetEntity = Employee.class, cascade = CascadeType.ALL)
     public Set<Employee> getEmployee() {
         return employee;
     }

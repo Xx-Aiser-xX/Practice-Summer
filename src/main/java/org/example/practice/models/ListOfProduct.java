@@ -48,8 +48,7 @@ public class ListOfProduct extends BaseEntity {
         this.theQuantityOfTheProduct = theQuantityOfTheProduct;
     }
 
-    @OneToMany(mappedBy = "listOfProduct", targetEntity = Manufactures.class,
-            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "listOfProduct", targetEntity = Manufactures.class, cascade = CascadeType.ALL)
     public Set<Manufactures> getManufactures() {
         return manufactures;
     }
@@ -57,8 +56,7 @@ public class ListOfProduct extends BaseEntity {
         this.manufactures = manufactures;
     }
 
-    @OneToMany(mappedBy = "listOfProduct", targetEntity = Order.class,
-            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "listOfProduct", targetEntity = Order.class, cascade = CascadeType.ALL)
     public Set<Order> getOrder() {
         return order;
     }
