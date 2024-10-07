@@ -21,14 +21,6 @@ public class LoyaltyCard extends BaseEntity {
 
     }
 
-    @Override
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_loyalty_card")
-    public int getId() { return id;}
-    public void setId(int id) { this.id = id;}
-
-
     @Column(name = "number_of_points")
     public int getPoints() { return points;}
     public void setPoints(int points) { this.points = points;}

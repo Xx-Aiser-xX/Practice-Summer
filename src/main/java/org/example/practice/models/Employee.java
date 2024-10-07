@@ -33,16 +33,8 @@ public class Employee extends BaseEntity {
 
     }
 
-    @Override
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_employee")
-    public int getId() { return id;}
-    public void setId(int id) { this.id = id;}
-
-
     @ManyToOne(optional = false)
-    @JoinColumn(name = "branch", referencedColumnName = "branch")
+    @JoinColumn(name = "branch", referencedColumnName = "id")
     public BranchOfTheOrganization getBranchOfTheOrganization() {
         return branchOfTheOrganization;
     }
@@ -51,7 +43,7 @@ public class Employee extends BaseEntity {
     }
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_human", referencedColumnName = "id_human")
+    @JoinColumn(name = "id_human", referencedColumnName = "id")
     public Human getHuman() {
         return human;
     }

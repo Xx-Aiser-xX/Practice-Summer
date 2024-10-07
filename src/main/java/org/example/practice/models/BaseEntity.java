@@ -2,13 +2,13 @@ package org.example.practice.models;
 
 import jakarta.persistence.*;
 
-//@MappedSuperclass
+@MappedSuperclass
 public abstract class BaseEntity {
     protected int id;
 
-//    @Id
-//    @Column(insertable = false, name = "id")
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public abstract int getId();
-    public abstract void setId(int id);
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int getId() { return id;}
+    public void setId(int id) { this.id = id;}
 }

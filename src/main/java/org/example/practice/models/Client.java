@@ -21,16 +21,8 @@ public class Client extends BaseEntity {
 
     }
 
-    @Override
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_client")
-    public int getId() { return id;}
-    public void setId(int id) { this.id = id;}
-
-
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_human", referencedColumnName = "id_human")
+    @JoinColumn(name = "id_human", referencedColumnName = "id")
     public Human getHuman() {
         return human;
     }
@@ -40,7 +32,7 @@ public class Client extends BaseEntity {
 
 
     @OneToOne
-    @JoinColumn(name = "id_loyalty_card")
+    @JoinColumn(name = "id_loyalty_card", referencedColumnName = "id")
     public LoyaltyCard getLoyaltyCard() {
         return loyaltyCard;
     }

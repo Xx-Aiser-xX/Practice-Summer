@@ -25,13 +25,6 @@ public class Human extends BaseEntity {
 
     }
 
-    @Override
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_human")
-    public int getId() { return id;}
-    public void setId(int id) { this.id = id;}
-
     @Column(name = "name")
     public String getFirstName() { return firstName;}
     public void setFirstName(String firstName) { this.firstName = firstName;}

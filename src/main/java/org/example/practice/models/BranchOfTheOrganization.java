@@ -25,13 +25,6 @@ public class BranchOfTheOrganization  extends BaseEntity{
 
     }
 
-    @Override
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "branch")
-    public int getId() { return id;}
-    public void setId(int id) { this.id = id;}
-
     @Column(name = "main_file")
     public int getMainBranch() { return mainBranch;}
     public void setMainBranch(int mainBranch) { this.mainBranch = mainBranch;}

@@ -29,19 +29,8 @@ public class Manufactures extends BaseEntity {
 
     }
 
-    @Override
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_party")
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_employee", referencedColumnName = "id_employee")
+    @JoinColumn(name = "id_employee", referencedColumnName = "id")
     public Employee getEmployee() {
         return employee;
     }
@@ -50,7 +39,7 @@ public class Manufactures extends BaseEntity {
     }
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_product", referencedColumnName = "id_product")
+    @JoinColumn(name = "id_product", referencedColumnName = "id")
     public ListOfProduct getListOfProduct() {
         return listOfProduct;
     }

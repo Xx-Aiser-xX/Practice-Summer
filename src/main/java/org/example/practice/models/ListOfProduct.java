@@ -24,16 +24,8 @@ public class ListOfProduct extends BaseEntity {
 
     }
 
-    @Override
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_product")
-    public int getId() { return id;}
-    public void setId(int id) { this.id = id;}
-
-
     @ManyToOne(optional = false)
-    @JoinColumn(name = "product_code", referencedColumnName = "product_code")
+    @JoinColumn(name = "product_code", referencedColumnName = "id")
     public Product getProduct() {
         return product;
     }

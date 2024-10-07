@@ -27,20 +27,8 @@ public class Order extends BaseEntity {
 
     }
 
-    @Override
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_order")
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_client", referencedColumnName = "id_client")
+    @JoinColumn(name = "id_client", referencedColumnName = "id")
     public Client getClient() {
         return client;
     }
@@ -49,7 +37,7 @@ public class Order extends BaseEntity {
     }
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_product", referencedColumnName = "id_product")
+    @JoinColumn(name = "id_product", referencedColumnName = "id")
     public ListOfProduct getListOfProduct() {
         return listOfProduct;
     }
