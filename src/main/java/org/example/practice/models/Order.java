@@ -14,9 +14,8 @@ public class Order extends BaseEntity {
     private int theQuantityOfTheProduct;
 
 
-    public Order(int id, Client client, ListOfProduct listOfProduct,
+    public Order(Client client, ListOfProduct listOfProduct,
                  Date date, int theQuantityOfTheProduct){
-        this.id = id;
         this.client = client;
         this.listOfProduct = listOfProduct;
         this.date = date;

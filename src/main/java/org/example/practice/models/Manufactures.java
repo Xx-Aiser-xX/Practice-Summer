@@ -15,9 +15,8 @@ public class Manufactures extends BaseEntity {
     private Timestamp expirationDate;
 
 
-    public Manufactures(int id, Employee employee, ListOfProduct listOfProduct,
+    public Manufactures(Employee employee, ListOfProduct listOfProduct,
                         Timestamp date, int quantityOfGoodsProduced, Timestamp expirationDate){
-        this.id = id;
         this.employee = employee;
         this.listOfProduct = listOfProduct;
         this.date = date;

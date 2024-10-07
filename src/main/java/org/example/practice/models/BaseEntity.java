@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @MappedSuperclass
 public abstract class BaseEntity {
-    protected int id;
+    private int id;
 
     @Id
     @Column(name = "id")
